@@ -1,6 +1,7 @@
 package com.example.cursolinkedin
 
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
@@ -23,9 +24,18 @@ import com.google.android.material.snackbar.Snackbar
 
 
 class MainActivity : AppCompatActivity() {
+
+    var incrementNumber = 0;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        var tv_increment: TextView = findViewById(R.id.tv_increment)
+
+        tv_increment.setOnClickListener {
+            ++incrementNumber
+            tv_increment.text = incrementNumber.toString()
+        }
 
         var llmain : LinearLayout = findViewById(R.id.main)
         var btn1 : Button = findViewById(R.id.btn1)
@@ -71,4 +81,19 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+
+        val userName = incrementNumber
+        outState.putInt("savedInt", incrementNumber)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+                super.onRestoreInstanceState(savedInstanceState)
+        val userInt = savedInstanceState.getInt("savedInt", 0)
+        incrementNumber = userInt
+        var tv_increment: TextView = findViewById(R.id.tv_increment)
+        tv_increment.text = incrementNumber.toString()
+    }
 }

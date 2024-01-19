@@ -11,36 +11,59 @@
     tools:context=".MainActivity"
     >
 
+<androidx.constraintlayout.widget.Guideline
+    android:id="@+id/guideline"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="0.3" />
+
+    <TextView
+        android:id="@+id/tv_increment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+
+        android:hint="Enter Some Text here "
+        android:text="0"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="24dp"
+        tools:layout_editor_absoluteY="182dp" />
+
     <TextView
         android:id="@+id/tv_textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
         android:hint="Enter Some Text here "
         android:text="Tap to change text"
         android:textSize="20sp"
-        android:layout_marginHorizontal="20dp"
-        />
+        tools:layout_editor_absoluteX="24dp"
+        tools:layout_editor_absoluteY="182dp" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Default Snackbar"
         android:id="@+id/btn1"
-        />
-
+        android:layout_width="128dp"
+        android:layout_height="58dp"
+        android:text="Default Snackbar"
+        tools:layout_editor_absoluteX="277dp"
+        tools:layout_editor_absoluteY="629dp" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Custom Snackbar"
         android:id="@+id/btn2"
-        />
+        android:layout_width="106dp"
+        android:layout_height="57dp"
+        android:text="Custom Snackbar"
+        tools:layout_editor_absoluteX="152dp"
+        tools:layout_editor_absoluteY="629dp" />
 
     <Button
         android:id="@+id/btn3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Action Call Snackbar" />
+        android:layout_width="141dp"
+        android:layout_height="62dp"
+        android:text="Action Call Snackbar"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="629dp" />
 
 
 </LinearLayout>
