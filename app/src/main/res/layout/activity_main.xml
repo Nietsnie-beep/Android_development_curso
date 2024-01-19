@@ -11,6 +11,16 @@
     tools:context=".MainActivity"
     >
 
+    <TextView
+        android:id="@+id/tv_textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Some Text here "
+        android:text="Tap to change text"
+        android:textSize="20sp"
+        android:layout_marginHorizontal="20dp"
+        />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,12 +35,12 @@
         android:text="Custom Snackbar"
         android:id="@+id/btn2"
         />
+
     <Button
+        android:id="@+id/btn3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Action Call Snackbar"
-        android:id="@+id/btn3"
-        />
+        android:text="Action Call Snackbar" />
 
 
 </LinearLayout>
