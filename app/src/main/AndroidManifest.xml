@@ -12,6 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CursoLinkedin"
         tools:targetApi="31">
+        <service
+            android:name=".addition"
+            android:enabled="true"
+            android:exported="true"></service>
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -23,6 +28,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".SecondActivity"></activity>
+        <activity android:name=".ThirdActivity"></activity>
+
     </application>
 
 </manifest>

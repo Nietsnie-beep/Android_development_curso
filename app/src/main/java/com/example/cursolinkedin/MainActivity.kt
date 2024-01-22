@@ -1,7 +1,9 @@
 package com.example.cursolinkedin
 
+import android.app.Activity
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
@@ -21,7 +23,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.compose.material3.AlertDialog
 import com.google.android.material.snackbar.Snackbar
 
-
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
+import android.content.Intent
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,11 +35,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var tv_increment: TextView = findViewById(R.id.tv_increment)
 
-        tv_increment.setOnClickListener {
-            ++incrementNumber
-            tv_increment.text = incrementNumber.toString()
+
+
+        val button: Button = findViewById(R.id.buttonOpenSecondActivity)
+        button.setOnClickListener {
+            val intent = Intent(this, ThirdActivity::class.java)
+            startActivity(intent)
         }
 
         var llmain : LinearLayout = findViewById(R.id.main)
@@ -56,10 +63,27 @@ class MainActivity : AppCompatActivity() {
         btn3.setOnClickListener {
             val actionSnackbar = Snackbar.make(llmain, "Action developer", Snackbar.LENGTH_LONG)
             actionSnackbar.show()
+            // MainActivity.kt o cualquier otra clase
+            Log.d("EventBus", "Sending MessageEvent")
+            EventBus.getDefault().post(MessageEvent("Hello everyone!"))
         }
         showEditTextDialog()
     }
+    override fun onStart() {
+        super.onStart()
+        EventBus.getDefault().register(this)
+    }
 
+    override fun onStop() {
+        EventBus.getDefault().unregister(this)
+        super.onStop()
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onMessageEvent(event: MessageEvent) {
+        Log.d("EventBus", "Received MessageEvent with message: ${event.message}")
+        Snackbar.make(findViewById(R.id.main), event.message, Snackbar.LENGTH_LONG).show()
+    }
     private fun showEditTextDialog(){
         var tv_textView : TextView = findViewById(R.id.tv_textView)
 
